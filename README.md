@@ -41,6 +41,8 @@ Connect-Four-Game Guide von askpython <https://www.askpython.com/python/examples
 
 Connect-Four-Terminal-Application von GabrielWongAu <https://github.com/GabrielWongAu/connect-four-terminal-application> <br>
 
+Connect-Four von HaseeGarfinkel <https://github.com/HaseebGarfinkel/Connect-Four> <br>
+
 </p>    
 
 <ul>
