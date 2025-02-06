@@ -18,14 +18,6 @@ class Player:
 
 
 
-
-
-
-    def check_for_win(self):
-        pass
-
-
-
 class PlayerAI:
     def __init__(self):
         pass

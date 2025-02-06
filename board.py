@@ -47,6 +47,63 @@ class Board:
             row_string += "|"
             print(row_string)
 
+    def check_for_win(self, player_id: str) -> bool:
+        """
+        Prüft, ob der aktuelle Spieler gewonnen hat.
+
+        Parameters:
+        -----------
+        player_id : str
+            Zeichen des aktuellen Spielers (z. B. "X" oder "O")
+
+        Returns:
+        --------
+        bool
+            True, wenn der Spieler gewonnen hat, sonst False.
+        """
+        # Horizontale Prüfung
+        for row in range(self.rows):
+            for col in range(self.columns - 3):  # Mindestens 4 Felder nötig
+                if (self.__class_gameboard[col][row:row + 4] == [player_id] * 4):
+                    return True
+
+        # Vertikale Prüfung
+        for col in range(self.columns):
+            if len(self.__class_gameboard[col]) >= 4:
+                for row in range(len(self.__class_gameboard[col]) - 3):
+                    if (self.__class_gameboard[col][row] == player_id and
+                            self.__class_gameboard[col][row + 1] == player_id and
+                            self.__class_gameboard[col][row + 2] == player_id and
+                            self.__class_gameboard[col][row + 3] == player_id):
+                        return True
+
+        # Diagonale Prüfung (\ Richtung)
+        for col in range(self.columns - 3):
+            for row in range(self.rows - 3):
+                if (len(self.__class_gameboard[col]) > row and
+                        len(self.__class_gameboard[col + 1]) > row + 1 and
+                        len(self.__class_gameboard[col + 2]) > row + 2 and
+                        len(self.__class_gameboard[col + 3]) > row + 3):
+                    if (self.__class_gameboard[col][row] == player_id and
+                            self.__class_gameboard[col + 1][row + 1] == player_id and
+                            self.__class_gameboard[col + 2][row + 2] == player_id and
+                            self.__class_gameboard[col + 3][row + 3] == player_id):
+                        return True
+
+        # Diagonale Prüfung (/ Richtung)
+        for col in range(self.columns - 3):
+            for row in range(3, self.rows):
+                if (len(self.__class_gameboard[col]) > row and
+                        len(self.__class_gameboard[col + 1]) > row - 1 and
+                        len(self.__class_gameboard[col + 2]) > row - 2 and
+                        len(self.__class_gameboard[col + 3]) > row - 3):
+                    if (self.__class_gameboard[col][row] == player_id and
+                            self.__class_gameboard[col + 1][row - 1] == player_id and
+                            self.__class_gameboard[col + 2][row - 2] == player_id and
+                            self.__class_gameboard[col + 3][row - 3] == player_id):
+                        return True
+
+        return False
 
 
     def update_board(self, player: Player) -> bool:
