@@ -9,18 +9,24 @@ class Board:
 
     Attribute
     ----------
-    rows = statischer Wert 6
-        initialisiert Reihenwert mit 6.
-    columns = statischer Wert 7
-        initialisiert Reihenwert mit 7.
-    class_gameboard - initialisiert leere Liste
-    Anschließend wird leeres Board erstellt im Konstruktor
-    Wird als private Attribute umgesetzt, da show_board/update_board Methode für Darstellung erstellt wurde
+
    TODO: falls irrelevant (aufgrund anderer noch zu implementierenden Methoden) anpassen
 
     """
 
     def __init__(self, rows=6, columns=7):
+        """
+        Initialisierung der Board Klasse
+        Parameters
+        ----------
+        rows = statischer Wert 6
+        initialisiert Reihenwert mit 6.
+        columns = statischer Wert 7
+        initialisiert Reihenwert mit 7.
+        class_gameboard - initialisiert leere Liste
+        Anschließend wird leeres Board erstellt im Konstruktor
+        Wird als private Attribute umgesetzt, da show_board/update_board Methode für Darstellung erstellt wurde
+        """
         self.rows = rows
         self.columns = columns
         self.__class_gameboard = []
@@ -28,7 +34,10 @@ class Board:
             self.__class_gameboard.append([])
 
     def __repr__(self):
-        return f"Board: {self.__class_gameboard}"
+        """
+        Überschreibung der Standard __repr__ Methode.
+        """
+        return f"Ich bin ein Board."
 
 
     def show_board(self):

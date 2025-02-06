@@ -33,7 +33,12 @@ class VierGewinnt:
 
 
     def game_loop(self):
+        """
+        Main VierGewinnt Spiel Methode
+        Returns
+        -------
 
+        """
         self.welcome_message()
 
         game_is_active = True
@@ -57,8 +62,11 @@ class VierGewinnt:
                         game_is_active = False
                         break
 
-        #TODO: win condition, AI, ivalid turns
+        #TODO: fix win condition (Bug - 4 gewinnt in unterster zeile nicht erkannt, player X), AI
+        #siehe bugs.py file, vermutlich problem bei horizontaler gewinnprüfung
 
 
 if __name__ == "__main__":
-    pass
+    gametest = VierGewinnt()
+    gametest.game_loop()
+
