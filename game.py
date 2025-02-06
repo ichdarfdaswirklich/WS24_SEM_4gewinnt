@@ -1,5 +1,8 @@
 # Platzhalter für Hauptdatei
 
+from board import Board
+
+
 
 class VierGewinnt:
     """VierGewinnt Python Terminal Spiel
@@ -15,15 +18,33 @@ class VierGewinnt:
 
 
     """
-    def __init__(self):
-        pass
+    def __init__(self, player1= "HUMAN1", player2 = "HUMAN2", player3 ="AI"):
+        self.player1 = player1
+        self.player2 = player2
+        self.player3 = player3
+
 
 
     def get_player_move(self):
         pass
 
     def play_game(self):
-        pass
+        """
+        Hauptfunktion für Spielablauf
+        Returns
+        -------
+        Reihenfolge:
+        Willkommens Nachricht
+        Board initialisieren
+
+
+        """
+        Board.welcome_message()
+        Board.display_board()
+
+
+
+
 
     def player_switch(self):
         pass
@@ -31,4 +52,5 @@ class VierGewinnt:
 
 
 if __name__ == "__main__":
-    pass
+    game_test = VierGewinnt()
+    game_test.play_game()
