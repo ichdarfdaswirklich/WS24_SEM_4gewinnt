@@ -35,9 +35,11 @@ Aufgrund fehlender Vorerfahrung, wurden in die Planung/ die Überlegungen folgen
 
 Connectfour Repo von pvmoura <https://github.com/pvmoura/ConnectFour/tree/master> <br>
 
-Connect-Four von erickackermann <https://github.com/erikackermann/Connect-Four/tree/master>
+Connect-Four von erickackermann <https://github.com/erikackermann/Connect-Four/tree/master> <br>
 
-Connect-Four-Game Guide von askpython <https://www.askpython.com/python/examples/connect-four-game>
+Connect-Four-Game Guide von askpython <https://www.askpython.com/python/examples/connect-four-game> <br>
+
+Connect-Four-Terminal-Application von GabrielWongAu <https://github.com/GabrielWongAu/connect-four-terminal-application> <br>
 
 </p>    
 
