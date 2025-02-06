@@ -1,3 +1,6 @@
+from random import random
+import random
+
 
 
 class Player:
@@ -34,7 +37,7 @@ class Player:
                     break
             print("Ungültiger Input, try again")
 
-
+    #TODO Implementieren, dass wenn Spalte voll ist, invalid move bei erneuter Auswahl erscheint
 
 
 class PlayerAI(Player):
@@ -52,9 +55,21 @@ class PlayerAI(Player):
             fixe Zuweisung von "O", da PlayerAI immer zweiter Spieler ist.
         """
         super().__init__(player_id)
+        self.current_move = 0
+
 
     def get_move(self):
-        pass
+        """
+        Automatische Eingabe einer random Zahl zwischen 1 und 7
+        Returns
+        -------
+
+        """
+        current_move = random.randint(1, 7)
+        self.current_move = current_move
+        print(f"beep boop ich nehm die + {self.current_move}")
+
+
 
 if __name__ == "__main__":
     pass
