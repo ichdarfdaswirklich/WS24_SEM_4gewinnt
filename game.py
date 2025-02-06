@@ -1,12 +1,10 @@
-# Platzhalter für Hauptdatei
 
 from board import Board
-
+from player import Player
 
 
 class VierGewinnt:
     """VierGewinnt Python Terminal Spiel
-
     Gewinn-Voraussetzung: 4 Token eines Spielers aneinander.
     Horizontal, vertikal oder diagonal.
     Spielbrett: 7 Zeilen, 6 Spalten
@@ -15,42 +13,46 @@ class VierGewinnt:
     Nach jedem Zug wird überprüft, ob Gewinn-Voraussetzung erfüllt ist.
     Falls ja - Spiel endet.
     Falls nein - Spielerwechsel.
-
-
     """
-    def __init__(self, player1= "HUMAN1", player2 = "HUMAN2", player3 ="AI"):
-        self.player1 = player1
-        self.player2 = player2
-        self.player3 = player3
 
-
-
-    def get_player_move(self):
-        pass
-
-    def play_game(self):
+    def welcome_message(self):
+        """Statische Methode für Willkommenstext in Terminal
         """
-        Hauptfunktion für Spielablauf
-        Returns
-        -------
-        Reihenfolge:
-        Willkommens Nachricht
-        Board initialisieren
+        creators = "Vici + Angie haben ihr bestes gegeben"
+        print("---------------------------------------")
+        print("---------------------------------------")
+        print("---------------------------------------")
 
-
-        """
-        Board.welcome_message()
-        Board.display_board()
-
-
+        print("---------------------------------------")
+        print("Willkommen zu unserem verzweifelten Versuch 4 gewinnt zu programmieren")
+        print("---------------------------------------")
+        print(creators)
+        print("---------------------------------------")
+        print("---------------------------------------")
 
 
 
-    def player_switch(self):
-        pass
+    def game_loop(self):
 
+        self.welcome_message()
+
+        game_is_active = True
+        active_board = Board()
+        player_list = []
+        player1 = Player("X")
+        player2 = Player("O")
+        player_list.append(player1)
+        player_list.append(player2)
+        while game_is_active:
+            for current_player in player_list:
+                active_board.show_board()
+                current_player.get_move()
+                if current_player.current_move == 0:
+                    game_is_active = False
+                active_board.update_board(current_player)
+
+        #TODO: win condition, AI, ivalid turns
 
 
 if __name__ == "__main__":
-    game_test = VierGewinnt()
-    game_test.play_game()
+    pass
