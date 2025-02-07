@@ -20,7 +20,6 @@ class Player:
         self.player_id = player_id
         self.current_move = 0
 
-
     def get_move(self):
         """
         Fordert den Spieler auf, eine Spalte für seinen Spielstein auszuwählen.
