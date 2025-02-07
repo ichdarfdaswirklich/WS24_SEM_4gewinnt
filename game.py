@@ -5,7 +5,8 @@ from player import Player, PlayerAI
 
 
 class VierGewinnt:
-    """VierGewinnt Python Terminal Spiel
+    """
+    VierGewinnt Python Terminal Spiel
     Gewinn-Voraussetzung: 4 Token eines Spielers aneinander.
     Horizontal, vertikal oder diagonal.
     Spielbrett: 7 Zeilen, 6 Spalten
@@ -17,7 +18,12 @@ class VierGewinnt:
     """
 
     def welcome_message(self):
-        """Statische Methode für Willkommenstext in Terminal
+        """
+        Gibt eine Willkommensnachricht im Terminal aus.
+
+        Returns
+        -------
+        None
         """
         creators = "Vici + Angie haben ihr bestes gegeben"
         print("---------------------------------------")
@@ -36,10 +42,11 @@ class VierGewinnt:
 
     def game_loop(self):
         """
-        Main VierGewinnt Spiel Methode
+        Hauptmethode für den Spielablauf von VierGewinnt.
+
         Returns
         -------
-
+        None
         """
         self.welcome_message()
 
@@ -84,9 +91,6 @@ class VierGewinnt:
                             game_is_active = False
                             break
 
-
-        #TODO: fix win condition (Bug - 4 gewinnt in unterster zeile nicht erkannt, player X), AI
-        #siehe bugs.py file, vermutlich problem bei horizontaler gewinnprüfung
 
 
 if __name__ == "__main__":

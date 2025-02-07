@@ -11,23 +11,23 @@ class Player:
     """
     def __init__(self, player_id : str):
         """
-        Initialisierung der Player Klasse
-
         Parameters
         ----------
-        player_id
+        player_id : str
+            Symbol des Spielers, z. B. "X" oder "O".
         """
+
         self.player_id = player_id
         self.current_move = 0
 
 
     def get_move(self):
         """
-        Eingabeaufforderung an Spielerobjekt für gewünschte Spalte für Spielstein
+        Fordert den Spieler auf, eine Spalte für seinen Spielstein auszuwählen.
 
         Returns
         -------
-
+        None
         """
         while True:
             current_move = input(f"Spieler {self.player_id} Enter your move: (Enter '0' to exit)")
@@ -37,7 +37,7 @@ class Player:
                     break
             print("Ungültiger Input, try again")
 
-    #TODO Implementieren, dass wenn Spalte voll ist, invalid move bei erneuter Auswahl erscheint
+
 
 
 class PlayerAI(Player):
@@ -60,9 +60,11 @@ class PlayerAI(Player):
 
     def get_move(self):
         """
-        Automatische Eingabe einer random Zahl zwischen 1 und 7
+        Wählt automatisch eine zufällige gültige Spalte für den AI-Spieler.
+
         Returns
         -------
+        None
 
         """
         current_move = random.randint(1, 7)
