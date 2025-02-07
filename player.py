@@ -1,8 +1,7 @@
 from random import random
 import random
 
-import board
-
+column_heights = [0] * 7
 
 class Player:
     """
@@ -21,7 +20,6 @@ class Player:
         self.player_id = player_id
         self.current_move = 0
 
-
     def get_move(self):
         """
         Fordert den Spieler auf, eine Spalte für seinen Spielstein auszuwählen.
@@ -31,13 +29,24 @@ class Player:
         None
         """
         while True:
-            current_move = input(f"Spieler {self.player_id} Enter your move: (Enter '0' to exit)")
-            if len(current_move) == 1: # Prüft ob Länge des inputs 1 entspricht
-                if "0" <= current_move <= "7": # Prüft ob input von 0 - 7 ist, da "0" als invalider Zug später gewertet wird
-                    self.current_move = int(current_move)
-                    break
-            print("Ungültiger Input, try again")
+            current_move = input(f"Spieler {self.player_id}, Du bist dran ('0' zum Beenden): ")
 
+            if current_move.isdigit() and "0" <= current_move <= "7":
+                self.current_move = int(current_move)
+
+                if self.current_move == 0:
+                    print("Tschüssssss")
+                    exit()
+
+                column_index = self.current_move - 1
+
+                if column_heights[column_index] < 6:
+                    column_heights[column_index] += 1
+                    return
+                else:
+                    print("Spalte ist voll! Bitte eine andere wählen :)")
+            else:
+                print("Bitte wähle eine Zahl zwischen 1 und 7. :(")
 
 
 
