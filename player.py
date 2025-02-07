@@ -1,6 +1,7 @@
 from random import random
 import random
 
+import board
 
 
 class Player:
@@ -37,11 +38,8 @@ class Player:
                     self.current_move = 0
                     break
                 if 1 <= int(current_move) <= 7:
-                    if len(board[current_move -1]) < 6: # Prüft, dass die Spalte eh nicht voll ist
                         self.current_move = current_move
                         break
-                    else:
-                        print("Diese Spalte ist voll, probiere eine andere")
             print("Nur Zahlen zwischen 1 & 7 bitte :)")
 
 
