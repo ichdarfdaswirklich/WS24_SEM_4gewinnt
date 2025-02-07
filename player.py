@@ -11,33 +11,40 @@ class Player:
     """
     def __init__(self, player_id : str):
         """
-        Initialisierung der Player Klasse
-
         Parameters
         ----------
-        player_id
+        player_id : str
+            Symbol des Spielers, z. B. "X" oder "O".
         """
+
         self.player_id = player_id
         self.current_move = 0
 
 
     def get_move(self):
         """
-        Eingabeaufforderung an Spielerobjekt für gewünschte Spalte für Spielstein
+        Fordert den Spieler auf, eine Spalte für seinen Spielstein auszuwählen.
 
         Returns
         -------
-
+        None
         """
         while True:
             current_move = input(f"Spieler {self.player_id} Enter your move: (Enter '0' to exit)")
-            if len(current_move) == 1:
-                if "0" <= current_move <= "7":
-                    self.current_move = int(current_move)
+            if current_move.isdigit(): #Prüft, ob die Eingabe eine Zahl ist
+                current_move = int(current_move)
+                if current_move == '0':
+                    self.current_move = 0
                     break
-            print("Ungültiger Input, try again")
+                if 1 <= int(current_move) <= 7:
+                    if len(board[current_move -1]) < 6: # Prüft, dass die Spalte eh nicht voll ist
+                        self.current_move = current_move
+                        break
+                    else:
+                        print("Diese Spalte ist voll, probiere eine andere")
+            print("Nur Zahlen zwischen 1 & 7 bitte :)")
 
-    #TODO Implementieren, dass wenn Spalte voll ist, invalid move bei erneuter Auswahl erscheint
+
 
 
 class PlayerAI(Player):
@@ -60,9 +67,11 @@ class PlayerAI(Player):
 
     def get_move(self):
         """
-        Automatische Eingabe einer random Zahl zwischen 1 und 7
+        Wählt automatisch eine zufällige gültige Spalte für den AI-Spieler.
+
         Returns
         -------
+        None
 
         """
         current_move = random.randint(1, 7)

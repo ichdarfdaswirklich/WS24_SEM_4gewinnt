@@ -5,27 +5,26 @@ class Board:
 
     """Board Klasse zur Initialisierung und Anzeige des Spielfelds
 
-    TODO: Public Attribute hier Dokumentieren
 
     Attribute
     ----------
-
-   TODO: falls irrelevant (aufgrund anderer noch zu implementierenden Methoden) anpassen
+    rows: int
+        Anzahl der Reihen im Spielfeld.
+    columns: int
+        Anzahl der Spalten im Spielfeld.
+    __class_gameboard : list[list[str]]
+        2D-Liste zur Speicherung des Spielfeldzustands.
 
     """
 
     def __init__(self, rows=6, columns=7):
         """
-        Initialisierung der Board Klasse
         Parameters
         ----------
-        rows = statischer Wert 6
-        initialisiert Reihenwert mit 6.
-        columns = statischer Wert 7
-        initialisiert Reihenwert mit 7.
-        class_gameboard - initialisiert leere Liste
-        Anschließend wird leeres Board erstellt im Konstruktor
-        Wird als private Attribute umgesetzt, da show_board/update_board Methode für Darstellung erstellt wurde
+        rows: int, optional
+            Anzahl der Reihen im Spielfeld (Standard: 6).
+        columns: int, optional
+            Anzahl der Spalten im Spielfeld (Standard: 7).
         """
         self.rows = rows
         self.columns = columns
@@ -42,7 +41,11 @@ class Board:
 
     def show_board(self):
         """
-        Methode zur visuell "ansprechenden" Darstellung des Boards
+        Gibt das Spielfeld visuell auf der Konsole aus.
+
+        Returns
+        -------
+        None
         """
         for row in range(self.rows):
             row_string = ""
@@ -72,9 +75,18 @@ class Board:
         """
         # Horizontale Prüfung
         for row in range(self.rows):
-            for col in range(self.columns - 3):  # Mindestens 4 Felder nötig
-                if (self.__class_gameboard[col][row:row + 4] == [player_id] * 4):
-                    return True
+            for col in range(self.columns - 3):
+                if (col +3 < self.columns and
+                    len(self.__class_gameboard[col]) > row and
+                    len(self.__class_gameboard[col + 1]) > row and
+                    len(self.__class_gameboard[col + 2]) > row and
+                    len(self.__class_gameboard[col + 3]) > row):
+                    if (self.__class_gameboard[col][row] == player_id and
+                        self.__class_gameboard[col + 1][row] == player_id and
+                        self.__class_gameboard[col + 2][row] == player_id and
+                        self.__class_gameboard[col + 3][row] == player_id):
+                        return True
+
 
         # Vertikale Prüfung
         for col in range(self.columns):
@@ -117,14 +129,14 @@ class Board:
 
     def update_board(self, player: Player) -> bool:
         """
-        Überprüfung auf Zug-Möglichkeit und Update des Boards mit aktuellen Zug
+        Überprüfung auf Zug-Möglichkeit und Update des Boards mit aktuellem Zug
         Parameters
         ----------
         player: Player Objekt
 
         Returns
         -------
-        True: Zug ist möglich + Board wurde abgedated
+        True: Zug ist möglich + Board wurde upgetaded
         False: Zug ist nicht möglich
         """
         desired_column = player.current_move
