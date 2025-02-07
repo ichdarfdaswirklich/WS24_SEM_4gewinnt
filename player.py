@@ -32,15 +32,12 @@ class Player:
         """
         while True:
             current_move = input(f"Spieler {self.player_id} Enter your move: (Enter '0' to exit)")
-            if current_move.isdigit(): #Prüft, ob die Eingabe eine Zahl ist
-                current_move = int(current_move)
-                if current_move == '0':
-                    self.current_move = 0
+            if len(current_move) == 1: # Prüft ob Länge des inputs 1 entspricht
+                if "0" <= current_move <= "7": # Prüft ob input von 0 - 7 ist, da "0" als invalider Zug später gewertet wird
+                    self.current_move = int(current_move)
                     break
-                if 1 <= int(current_move) <= 7:
-                        self.current_move = current_move
-                        break
-            print("Nur Zahlen zwischen 1 & 7 bitte :)")
+            print("Ungültiger Input, try again")
+
 
 
 

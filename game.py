@@ -76,25 +76,32 @@ class VierGewinnt:
                             current_player.get_move()
                     if current_player.current_move == 0:
                         game_is_active = False  # Beenden, falls der Spieler aufhören will
-                        break
-                    if active_board.check_for_win(current_player.player_id):
+                        return game_is_active
+
+                    elif active_board.check_for_win(current_player.player_id):
                         active_board.show_board()
                         print(f"Spieler {current_player.player_id} hat gewonnen!")
                         game_is_active = False
-                        break
+                        return game_is_active
+
             elif chose_gamestyle == "A":
                 for current_player in player_ai_list:  # Spielerwechsel nach jedem Zug
                     active_board.show_board()
                     current_player.get_move()
+                    while True: # while Loop um zu prüfen ob Spalte bereits voll ist
+                        if active_board.update_board(current_player):
+                            break
+                        else:
+                            print("Spalte voll.... Wähle eine andere")
+                            current_player.get_move()
                     if current_player.current_move == 0:
                         game_is_active = False  # Beenden, falls der Spieler aufhören will
                         break
-                    if active_board.update_board(current_player):
-                        if active_board.check_for_win(current_player.player_id):
-                            active_board.show_board()
-                            print(f"Spieler {current_player.player_id} hat gewonnen!")
-                            game_is_active = False
-                            break
+                    elif active_board.check_for_win(current_player.player_id):
+                        active_board.show_board()
+                        print(f"Spieler {current_player.player_id} hat gewonnen!")
+                        game_is_active = False
+                        break
 
 
 
