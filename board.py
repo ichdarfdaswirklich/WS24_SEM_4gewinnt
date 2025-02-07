@@ -16,6 +16,8 @@ class Board:
         2D-Liste zur Speicherung des Spielfeldzustands.
 
     """
+    def get_gameboard(self):
+        return self.__class_gameboard
 
     def __init__(self, rows=6, columns=7):
         """
@@ -26,6 +28,7 @@ class Board:
         columns: int, optional
             Anzahl der Spalten im Spielfeld (Standard: 7).
         """
+
         self.rows = rows
         self.columns = columns
         self.__class_gameboard = []
