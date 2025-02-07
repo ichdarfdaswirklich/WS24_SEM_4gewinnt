@@ -29,20 +29,80 @@ Die jeweiligen Code Abschnitte sind mit Quellenverweisen gekennzeichnet.</p>
   Was haben wir uns nun nach der initialen Grobplanung gedacht? Was haben wir gemacht?<br>
   Zunächst haben wir uns vorerst dazu entschieden, so wenig "Zusatzmodule"/Libraries wie nötig zur Umsetzung zu verwenden. So verlockend die Aussicht auf ein grafisch ansprechendes mittels PyGame o.Ä. umgesetzen Ergebnis auch klingt, werden wir auf den Charme einer Terminal Implementation des Spiels setzen. <br>
   <br>
-  Wish us look! </p>
+  Wish us luck! </p>
 
 ### Klassen/Methoden - Umsetzung Schritt für Schritt
 
-<ol><li>Board</li>
+<ol>
+  <li>VierGewinnt Klasse</li>
+  <p>Umsetzung/Methoden:
+  <ul>
+    <li>welcome_message</li>
+    <li>game_loop</li>
+  </ul></p>
+  <p>Konkrete Unterschiede zur initialen Planung:
+  <ul>
+    <li>Geplante Initialisierung der VierGewinn Klasse wurde nicht umgesetzt, da sich im Laufe des Projekts andere/bessere Varianten zur Umsetzung ergeben haben.</li>
+    <li>__repr__ Methode (noch?) nicht umgesetzt</li>
+    <li>Die geplante Methode start_game wurde zu gamne_loop. Diese Methode übernimmt den Aufruf der notwendigen Methoden der anderen Klassen sowie die Übergabe bestimmter Ausgaben.</li>
+    <li>welcome_message wurde als Methode hinzugefügt um den Spielstart grafisch/textuell etwas von den restlichen Zügen abzugrenzen (for Fun! and for Science)</li>
+  </ul>
+  </p>
+  
+  <li>Board Klasse</li>
+  <p>Umsetzung/Methoden:
+    <ul>
+      <li>__init__</li>
+      <li>__repr__</li>
+      <li>show_board</li>
+      <li>check_for_win</li>
+      <li>update_board</li>
+    </ul>
+  </p>
 <p>Zuerst umgesetzte Methode - display_board als staticmethod. Da Initiale Board Generierung unserer Ansicht nach stets gleich passiert. Zusätzlich eine staticmethod mit "Begrüßungstext".</p>
+<p>Konkrete Unterschiede zur initialen Planung:
+<ul>
+  <li>__init__ Methode fast ident wie Planung umgesetzt -> zusätzliche Parameter/Attribute (die nicht direkt übergeben werden): self.__class_gameboard initialisiert bei Erstellung des Board Objekts das Spielfeld und speichert im Laufe des Spiels den aktuellen Zustand.</li>
+  <li>__repr__ Methode wurde u.A. zum Ausprobieren des Überschreibens in der Praxis erstellt (for Science!) </li>
+  <li>geplante win_check Methode wurde zu check_for_win (Name gefiel besser). Gewinnüberprüfung wurde für 4 mögliche Richtungen ausgehend vom gelegten Spielstein umgesetzt.</li>
+  <li>geplante reset Methode wurde nicht umgesetzt (Notwendigkeit nicht gegeben)</li>
+  <li>geplante display_board Methode wurde zu show_board (Name gefiel besser)</li>
+</ul>
+</p>
 
-<li>(klasse 2)</li>
-<p>(Veränderungen klasse 2 von initialer Planung) <br>
-(Veränderungen bestimmter Methoden)</p>
 
-<li>(klasse 3)</li>
-<p>(Veränderungen klasse 3 von initialer Planung)
-<br>
-(Veränderungen bestimmter Methoden)</p>
+
+<li>Player Klasse</li>
+<p>Umsetzung/Methoden:
+<ul>
+  <li>__init__</li>
+  <li>get_move</li>
+  <li>Parameter/Attribute: player_id (Token/Spielstein), current_move (zu übergebener Zug des Player Objekts an Board)</li>
+</ul>
+</p>
+<p>Konkrete Unterschiede zur initialen Planung:
+<ul>
+<li>Wurde nicht mittels abstrakter Klasse umgesetzt, da Nunserer Meinung nach nicht notwendig</li>
+  <li>Initialisierung wurde im ersten Klassendiagramm nicht dediziert aufgeführt, ist jedoch für Spieler Objekt Generierung notwendig.</li>
+  <li>Geplante "forfeit" Methode wurde in anderen Methoden untergebracht. Abfrage ob beendet werden soll mittels Eingabe von "0"</li>
+</ul>
+</p>
+
+
+<li>PlayerAI von Player abgeleitete Klasse</li>
+<p>Umsetzung/Methoden:
+<ul>
+  <li>__init__</li>
+  <li>get_move</li>
+    <li>Parameter/Attribute: player_id="O", current_move (zu übergebener Zug des Player Objekts an Board) -> wird über Player Klasse super().__init__ initialisiert</li>
+</ul>
+</p>
+<p>Konkrete Unterschiede zur initialen Planung:
+<ul>
+  <li>Statt der initial geplanten Umsetzung über abstrakte Player Klasse, wurde PlayerAI Klasse "nur" als abgeleitete Klasse der Player Klasse umgesetzt. Diese Entscheidung hat sich für uns im Laufe der Umsetzung als praktikabel herausgestellt.</li>
+    <li>Initialisierung wurde im ersten Klassendiagramm nicht dediziert aufgeführt, ist jedoch für Spieler Objekt Generierung notwendig.</li>
+
+</ul>
+</p>
 
 </ol>
