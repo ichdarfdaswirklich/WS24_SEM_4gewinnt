@@ -31,11 +31,18 @@ class Player:
         """
         while True:
             current_move = input(f"Spieler {self.player_id} Enter your move: (Enter '0' to exit)")
-            if len(current_move) == 1:
-                if "0" <= current_move <= "7":
-                    self.current_move = int(current_move)
+            if current_move.isdigit(): #Prüft, ob die Eingabe eine Zahl ist
+                current_move = int(current_move)
+                if current_move == '0':
+                    self.current_move = 0
                     break
-            print("Ungültiger Input, try again")
+                if 1 <= int(current_move) <= 7:
+                    if len(board[current_move -1]) < 6: # Prüft, dass die Spalte eh nicht voll ist
+                        self.current_move = current_move
+                        break
+                    else:
+                        print("Diese Spalte ist voll, probiere eine andere")
+            print("Nur Zahlen zwischen 1 & 7 bitte :)")
 
 
 
