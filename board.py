@@ -75,9 +75,18 @@ class Board:
         """
         # Horizontale Prüfung
         for row in range(self.rows):
-            for col in range(self.columns - 3):  # Mindestens 4 Felder nötig
-                if (self.__class_gameboard[col][row:row + 4] == [player_id] * 4):
-                    return True
+            for col in range(self.columns - 3):
+                if (col +3 < self.columns and
+                    len(self.__class_gameboard[col]) > row and
+                    len(self.__class_gameboard[col + 1]) > row and
+                    len(self.__class_gameboard[col + 2]) > row and
+                    len(self.__class_gameboard[col + 3]) > row):
+                    if (self.__class_gameboard[col][row] == player_id and
+                        self.__class_gameboard[col + 1][row] == player_id and
+                        self.__class_gameboard[col + 2][row] == player_id and
+                        self.__class_gameboard[col + 3][row] == player_id):
+                        return True
+
 
         # Vertikale Prüfung
         for col in range(self.columns):
