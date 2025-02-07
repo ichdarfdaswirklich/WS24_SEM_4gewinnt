@@ -1,7 +1,7 @@
 from random import random
 import random
 
-
+column_heights = [0] * 7
 
 class Player:
     """
@@ -30,19 +30,24 @@ class Player:
         None
         """
         while True:
-            current_move = input(f"Spieler {self.player_id} Enter your move: (Enter '0' to exit)")
-            if current_move.isdigit(): #Prüft, ob die Eingabe eine Zahl ist
-                current_move = int(current_move)
-                if current_move == '0':
-                    self.current_move = 0
-                    break
-                if 1 <= int(current_move) <= 7:
-                    if len(board[current_move -1]) < 6: # Prüft, dass die Spalte eh nicht voll ist
-                        self.current_move = current_move
-                        break
-                    else:
-                        print("Diese Spalte ist voll, probiere eine andere")
-            print("Nur Zahlen zwischen 1 & 7 bitte :)")
+            current_move = input(f"Spieler {self.player_id}, Du bist dran ('0' zum Beenden): ")
+
+            if current_move.isdigit() and "0" <= current_move <= "7":
+                self.current_move = int(current_move)
+
+                if self.current_move == 0:
+                    print("Tschüssssss")
+                    exit()
+
+                column_index = self.current_move - 1
+
+                if column_heights[column_index] < 6:
+                    column_heights[column_index] += 1
+                    return
+                else:
+                    print("Spalte ist voll! Bitte eine andere wählen :)")
+            else:
+                print("Bitte wähle eine Zahl zwischen 1 und 7. :(")
 
 
 
